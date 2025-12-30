@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مسراتييي 💕</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Tahoma, sans-serif;
+  background: linear-gradient(135deg,#ffd6e8,#fff1f7);
+  overflow-x:hidden;
+}
+
+.page{
+  display:none;
+  min-height:100vh;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.page.active{
+display:flex;
+  opacity:1;
+  transform: translateY(0);
+}
+
+.page-img {
+  width: 70%;
+  max-width: 250px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:22px;
+  max-width:420px;
+  margin:20px;
+  text-align:center;
+  box-shadow:0 15px 30px rgba(0,0,0,.15);
+  position:relative;
+}
+
+h1{color:#ff5fa2}
+p{line-height:1.9;color:#444;font-size:16px}
+
+button{
+  background:#ff5fa2;
+  border:none;
+  color:white;
+  padding:12px 22px;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  margin:10px;
+}
+
+button:hover{background:#ff3f90}
+
+.no{
+  background:#999;
+}
+.no:hover{background:#777}
+
+.kitty{
+  position:absolute;
+  font-size:28px;
+}
+.k1{top:-10px;left:-10px}
+.k2{bottom:-10px;right:-10px}
+
+.music{
+  font-size:22px;
+  margin:10px 0;
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.15)}
+  100%{transform:scale(1)}
+}
+
+@keyframes float{
+  to{transform:translateY(-70px);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<!-- صوت الموسيقى -->
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- صفحة التحقق -->
+ <div id="p0" class="page active">
+  <img src="images/Kitty.gif" class="verify-gif">
+  <h2>انتي مسرة 🤨🤨🤨 ؟</h2>
+  <button onclick="start()">إي</button>
+  <button onclick="nope()">لا</button>
+ </div>
+</div>
+
+<!-- الصفحة 1 -->
+<div class="page" id="p1">
+  <div class="card">
+    <div class="kitty k1">🐱</div>
+    <div class="kitty k2">🎀</div>
+    <img src="images/page1.png" class="page-img">
+    <h1>مسراتييي 💕</h1>
+    <p>
+      جنت داقرة و شتاقيتلج  
+      فصفنت و سويت هذا الموقع الج 🫣🫣
+    </p>
+   <button onclick="showPage('p2')">كمّل 🤍</button>
+  </div>
+</div>
+
+<!-- الصفحة 2 -->
+<div class="page" id="p2">
+  <img src="images/page2.png" class="page-img">
+  <div class="card">
+    <p>
+رجلٌ وما استسلمتُ قبلُ لفارسٍ<br>
+مالي أمام عيونها مستسلِمُ !؟
+    </p>
+
+    <p>
+أأعودُ منتصِراً بكل معاركي<br>
+وأمام عينيها البريئة أُهزَمُ !؟
+    </p>
+
+   <button onclick="showPage('p3')"> وبعد 🤍</button>
+  </div>
+</div>
+
+<!-- الصفحة 3 -->
+<div class="page" id="p3">
+ <img src="images/page3.png" class="page-img">
+  <div class="card">
+    <p>
+أنا شاعرٌ ما أسعفتْه حروفه<br>
+الحبُ من لغة المشاعر أعظمُ
+    </p>
+
+    <p>
+لي ألف بيتٍ بالفصيح أجِدتُها<br>
+لكنني في حبها أتلعثمُ
+    </p>
+
+    <button onclick="showPage('p4')">وبعد شنو 🤍</button>
+  </div>
+</div>
+
+<!-- الصفحة 4 -->
+<div class="page" id="p4">
+ <img src="images/page4.png" class="page-img">
+  <div class="card">
+    <p>
+احبج من كل گلبي  
+يا احلا شي بدنيتي كلها ❤️
+    </p>
+
+    <div class="music">🎵 ✨ 💕</div>
+
+    <button onclick="showPage('p5')">وأخير شي 🫶</button>
+  </div>
+</div>
+
+<!-- النهاية -->
+<div class="page" id="p5">
+ <img src="images/page5.png" class="page-img">
+  <div class="card">
+    <p style="color:#ff5fa2">
+إذا ابتسمتي…  
+فأنا ربحت الدنيا كلها 💗
+    </p>
+
+    <button onclick="hug()">🫂 حضن</button>
+  </div>
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  document.getElementById(id).classList.add('active');
+}
+
+function start() {
+  // نبدل الصفحة أولاً
+  showPage('p1');
+
+  // نشغل الموسيقى
+  var music = document.getElementById('music');
+  if (music) {
+    music.volume = 0.8;
+    music.play().catch(function(){});
+  }
+}
+
+function hug(){
+  alert("حضن خاص لماامييييي  🫂💗");
+  if(navigator.vibrate){
+    navigator.vibrate([100,50,100]);
+  }
+}
+
+function nope() {
+  alert('طلعي برة 😌');
+}
+
+function createStickers() {
+  const layer = document.getElementById("sticker-layer");
+  if (!layer) return;
+
+  layer.innerHTML = "";
+  const total = 25; // زيد الرقم إذا تريد أكثر
+
+  for (let i = 0; i < total; i++) {
+    const img = document.createElement("img");
+    img.src = "images/sticker1.gif"; // غيرها إذا تريد
+    img.className = "sticker";
+    img.style.top = Math.random() * 100 + "%";
+    img.style.left = Math.random() * 100 + "%";
+    img.style.transform = "rotate(" + (Math.random()*30-15) + "deg)";
+    layer.appendChild(img);
+  }
+}
+
+// نولدها لما الصفحة تفتح
+document.addEventListener("DOMContentLoaded", createStickers);
+
+// قلوب
+document.addEventListener('click', function(e) {
+  var h = document.createElement('div');
+  h.innerHTML = '💖';
+  h.style.position = 'fixed';
+  h.style.left = e.clientX + 'px';
+  h.style.top = e.clientY + 'px';
+  h.style.animation = 'float 1.5s forwards';
+  document.body.appendChild(h);
+  setTimeout(function(){ h.remove(); }, 1500);
+});
+</script>
+
+</body>
+</html>
